@@ -2,9 +2,10 @@ import os
 import sys
 from pyspark.sql import SparkSession
 from pyspark.sql.types import *
+
 spark = SparkSession\
     .builder\
-    .appName("PythonSQL")\
+    .appName("Telco Data Set")\
     .master("local[*]") \
     .getOrCreate()
 
@@ -40,7 +41,7 @@ schema = StructType(
 )    
     
 telco_data = spark.read.csv(
-  "file:/home/cdsw/raw/churn/WA_Fn-UseC_-Telco-Customer-Churn-.csv",
+  "file:/home/cdsw/raw/WA_Fn-UseC_-Telco-Customer-Churn-.csv",
   header=True,
   schema=schema,
   sep=',',
